@@ -27,7 +27,7 @@ jobs:
           (cd pdns/pdns/dnsdistdist/&&autoreconf -vi&&./configure&&make && sudo make install)
           (sudo mkdir -p /var/run/mysqld&&sudo chown mysql:mysql /var/run/mysqld&&sudo service mysql stop&&sleep 20)
           (sudo mysqld_safe --skip-grant-tables&)
-          (sleep 20&&sudo mysql --user=root < pdnsSql/setpass.sql&&sudo pkill mysql*&&sudo service mysql start&&sudo mysql --user=root --password=password < pdnsSql/powerdns.sql)
+          (sleep 20&&sudo mysql --user=root < in/pdnsSql/setpass.sql&&sudo pkill mysql*&&sudo service mysql start&&sudo mysql --user=root --password=password < in/pdnsSql/powerdns.sql)
           sh in/d1.sh
           sh in/d2.sh
           sh in/s1.sh 
