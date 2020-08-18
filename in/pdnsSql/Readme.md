@@ -7,3 +7,9 @@ dig @127.0.0.1 -p 531 values-lua.proxy.tests.powerdns.com.  +tcp
 
 sudo dnsdist -C /opt/dnsdist2.conf --local=127.0.0.1:531 -v  
 sudo pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port=9090 --proxy-protocol-from=127.0.0.1  
+
+
+## pdns recursor RPZ  
+sudo bash
+ulimit -n 65536  
+pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port=9090  
