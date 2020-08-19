@@ -22,4 +22,6 @@ pdns_recursor
 dig @127.0.0.1 -p 9090 my.local  
 dig @127.0.0.1 -p 9090 1.example.net
 
-
+# see for convert zone to sql
+#zone2sql --named-conf=/etc/named.conf --gmysql > named2pdns.sql  
+#mysql -u updns -p pdns < named2pdns.sql 
