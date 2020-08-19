@@ -28,7 +28,7 @@ jobs:
           (sudo mkdir -p /var/run/mysqld&&sudo chown mysql:mysql /var/run/mysqld&&sudo service mysql stop&&sleep 20)
           (sudo mysqld_safe --skip-grant-tables&)
           (sleep 20&&sudo mysql --user=root < in/pdnsSql/setpass.sql&&sudo pkill mysql*&&sudo service mysql start&&sudo mysql --user=root --password=password < in/pdnsSql/powerdns.sql)
-          (sudo cp in/pdnsSql/recursor.conf /usr/local/etc/recursor.conf&&sudo cp in/pdnsSql/pdns.conf /usr/local/etc/pdns.conf&&sudo mysql --user=root --password=password < in/pdnsSql/mylocal.sql)
+          (sudo mkdir /var/run/pdns-recursor && sudo cp in/pdnsSql/recursor.conf /usr/local/etc/recursor.conf&&sudo cp in/pdnsSql/pdns.conf /usr/local/etc/pdns.conf&&sudo mysql --user=root --password=password < in/pdnsSql/mylocal.sql)
           sh in/d1.sh
           sh in/d2.sh
           sh in/s1.sh 
