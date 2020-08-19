@@ -12,4 +12,9 @@ sudo pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port
 ## pdns recursor RPZ  
 sudo bash  
 ulimit -n 65536    
-pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port=9090  
+pdns_server --no-config --daemon=no --local-port=54 --launch=gmysql --gmysql-user=root --gmysql-password=password  
+mkdir /var/run/pdns-recursor  
+pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port=9090 --forward-zones=mydomain.local=127.0.0.1:54 
+dig @127.0.0.1 -p 9090 tut.by
+
+
