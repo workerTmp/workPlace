@@ -1,0 +1,1 @@
+rpzFile("/opt/b.rpz", {})
