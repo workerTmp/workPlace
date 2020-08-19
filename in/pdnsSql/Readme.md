@@ -20,6 +20,6 @@ pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port=9090
 pdns_server  
 pdns_recursor  
 dig @127.0.0.1 -p 9090 my.local  
-dig @127.0.0.1 -p 9090 www.example.net
+dig @127.0.0.1 -p 9090 1.example.net
 
 
