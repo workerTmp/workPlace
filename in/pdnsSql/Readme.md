@@ -10,6 +10,6 @@ sudo pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port
 
 
 ## pdns recursor RPZ  
-sudo bash
-ulimit -n 65536  
+sudo bash  
+ulimit -n 65536    
 pdns_recursor --local-address=127.0.0.1 --allow-from=127.0.0.1 --local-port=9090  
