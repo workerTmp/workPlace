@@ -76,25 +76,13 @@ jobs:
         if: contains(github.event.label.name, 'dovecotanaliz')      
         run: |
           sudo apt-get update 
-          sudo apt-get install gettext
-          sudo apt-get install iftop
-          sudo apt-get install pandoc
-          git clone https://github.com/dovecot/core.git dovecot
-          cd dovecot/
-          ./autogen.sh
-          ./configure --enable-maintainer-mode
-          make
-          sudo make install
+          sudo apt-get install -y gettext iftop pandoc
+          (git clone https://github.com/dovecot/core.git dovecot && cd dovecot/&& ./autogen.sh&& ./configure --enable-maintainer-mode&& make&&  sudo make install)
           sudo useradd vmail
           sudo useradd dovenull
           sudo useradd dovecot
-          cd ..
           (git clone https://github.com/dovecot/imaptest.git&&cd imaptest&&./autogen.sh&&./configure --with-dovecot=../dovecot&&make)
-          sudo cp in/dovecot.conf /usr/local/etc/dovecot/dovecot.conf
-          sudo cp in/passwd /opt/passwd
-          sh in/d1.sh
-          sh in/d2.sh
-          sh in/s1.sh 
+          (sudo cp in/dovecot.conf /usr/local/etc/dovecot/dovecot.conf &&  sudo cp in/passwd /opt/passwd&& sh in/d1.sh&& sh in/d2.sh&& sh in/s1.sh) 
           sudo apt-get install -y gdb
           git clone https://github.com/longld/peda.git ~/peda
           echo "source ~/peda/peda.py" >> ~/.gdbinit
