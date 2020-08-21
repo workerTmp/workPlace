@@ -19,9 +19,8 @@
 # e.g.
 ./autogen.sh
 ./configure --enable-maintainer-mode
-make 
-
-python3 libadd.py $SRC
+make
+python3 $SRC/libadd.py $SRC/medovecot
 
 # build fuzzers
 # e.g.
@@ -29,6 +28,6 @@ for file in $SRC/*.c;
 do
     name=$(basename $file .c)
     $CC $CFLAGS -c -I . $SRC/${name}.c -o $OUT/${name}.o
-    $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/liball1.a
+    $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/medovecot/liball1.a
     rm -f $OUT/${name}.o
 done
