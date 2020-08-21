@@ -1,6 +1,9 @@
 #include <stdint.h>
 #include <stddef.h>
-#include <string>
+#include <string.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
 struct buffer {
         const void *data;
         const size_t used;
@@ -48,7 +51,7 @@ extern struct mail_html2text * mail_html2text_init(enum mail_html2text_flags fla
 extern void mail_html2text_more(struct mail_html2text *ht,const unsigned char *data, size_t size,buffer_t *output);
 
 
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
+extern int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
 
 
