@@ -16,6 +16,8 @@
 
 FROM gcr.io/oss-fuzz-base/base-builder
 RUN apt-get update && apt-get install -y make autoconf automake libtool wget gettext automake libxml2-dev m4 pkg-config bison flex pandoc
-RUN git clone https://github.com/dovecot/core  medovecot       
+RUN git clone https://github.com/dovecot/core  medovecot     
 WORKDIR medovecot
 COPY build.sh $SRC/
+COPY libadd.py $SRC/
+COPY ftest.c $SRC/
