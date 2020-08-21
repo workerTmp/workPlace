@@ -33,9 +33,7 @@ jobs:
           sh in/d1.sh
           sh in/d2.sh
           sh in/s1.sh 
-          sudo apt-get install -y gdb
-          git clone https://github.com/longld/peda.git ~/peda
-          echo "source ~/peda/peda.py" >> ~/.gdbinit
+          (sudo apt-get install -y gdb &&  git clone https://github.com/longld/peda.git ~/peda && echo "source ~/peda/peda.py" >> ~/.gdbinit)
           #sudo systemctl disable systemd-resolved
           #sudo systemctl stop systemd-resolved
       - name: "afltmux"
