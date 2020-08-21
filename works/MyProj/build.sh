@@ -20,7 +20,7 @@
 ./autogen.sh
 ./configure --enable-maintainer-mode
 make
-python3 $SRC/libadd.py $SRC/medovecot
+python3 $SRC/libadd.py $SRC/medovecot/
 
 # build fuzzers
 # e.g.
