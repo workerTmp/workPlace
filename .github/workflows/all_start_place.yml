@@ -21,8 +21,7 @@ jobs:
           sudo apt-get update 
           git clone https://github.com/google/oss-fuzz.git 
           (cd oss-fuzz && export PROJECT_NAME=medovecot && python infra/helper.py generate $PROJECT_NAME)
-          (cp works/MyProj/* oss-fuzz/projects/medovecot/&&cp works/medovecot/fuzz*.c oss-fuzz/projects/medovecot/&&cp works/medovecot/libadd.py oss-fuzz/projects/medovecot/)
-          (cd oss-fuzz &&python infra/helper.py build_image medovecot --pull)
+          (cp works/medovecot/* oss-fuzz/projects/medovecot/&&cd oss-fuzz &&python infra/helper.py build_image medovecot --pull)
           (cd oss-fuzz &&python infra/helper.py build_fuzzers medovecot && python infra/helper.py check_build medovecot)
           #(cd oss-fuzz && python infra/helper.py run_fuzzer medovecot fuzz_test-istream-attachment)
       - name: "pdnstmux"
