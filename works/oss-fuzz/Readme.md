@@ -6,7 +6,8 @@ sudo apt-get install -y gettext iftop pandoc
 
 python3 libadd.py /opt/dovecot/  
 
-
+#create corpus zip file
+python3 pars.py allfile 124/ fuzz_test-mail-html2text  
 
 
 cflow  --tree --brief  dovecot/src/lib-mail/mail-html2text.c   
