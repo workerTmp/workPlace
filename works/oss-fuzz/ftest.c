@@ -63,7 +63,7 @@ if(size==0)
 ht = mail_html2text_init(MAIL_HTML2TEXT_FLAG_SKIP_QUOTED);
 mail_html2text_more(ht, data, size, str);
 mail_html2text_deinit(&ht);
-str_free(str);
+str_free(&str);
 
   return 0;
 }
