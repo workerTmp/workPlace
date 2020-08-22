@@ -50,7 +50,8 @@ struct mail_html2text {
 extern struct mail_html2text * mail_html2text_init(enum mail_html2text_flags flags);
 extern void mail_html2text_more(struct mail_html2text *ht,const unsigned char *data, size_t size,buffer_t *output);
 extern string_t *t_str_new(size_t initial_size);
-
+extern void str_free(string_t **str);
+extern void mail_html2text_deinit(struct mail_html2text **ht);
 extern int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
 
@@ -61,6 +62,8 @@ if(size==0)
         return 15;
 ht = mail_html2text_init(MAIL_HTML2TEXT_FLAG_SKIP_QUOTED);
 mail_html2text_more(ht, data, size, str);
+mail_html2text_deinit(&ht);
+str_free(str);
 
   return 0;
 }
