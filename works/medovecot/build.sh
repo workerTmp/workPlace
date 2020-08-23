@@ -20,10 +20,11 @@
 ./autogen.sh
 ./configure --enable-maintainer-mode
 make
-python3 $SRC/libadd.py $SRC/medovecot/
 
 # build fuzzers
 # e.g.
+python3 $SRC/libadd.py $SRC/medovecot/
+cp $SRC/fuzz*.zip $OUT/
 for file in $SRC/*.c;
 do
     name=$(basename $file .c)
