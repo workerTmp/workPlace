@@ -24,8 +24,8 @@ make
 # build fuzzers
 # e.g.
 python3 $SRC/libadd.py $SRC/medovecot/
-cp $SRC/fuzz*.zip $OUT/
-for file in $SRC/fuzz*.c;
+cp $SRC/fuzz_*.zip $OUT/
+for file in $SRC/fuzz_*.c;
 do
     name=$(basename $file .c)
     mkdir /tmp/${name}_corpus
