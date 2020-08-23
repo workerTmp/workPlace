@@ -20,4 +20,5 @@ RUN git clone https://github.com/dovecot/core  medovecot
 WORKDIR medovecot
 COPY build.sh $SRC/
 COPY libadd.py $SRC/
-COPY fuzz* $SRC/
+COPY fuzz*.c $SRC/
+COPY fuzz*.zip $OUT/
