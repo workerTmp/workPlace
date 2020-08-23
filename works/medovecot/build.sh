@@ -25,9 +25,10 @@ make
 # e.g.
 python3 $SRC/libadd.py $SRC/medovecot/
 cp $SRC/fuzz*.zip $OUT/
-for file in $SRC/*.c;
+for file in $SRC/fuzz*.c;
 do
     name=$(basename $file .c)
+    mkdir /tmp/${name}_corpus
     $CC $CFLAGS -c -I . $SRC/${name}.c -o $OUT/${name}.o
     $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/medovecot/liball1.a
     rm -f $OUT/${name}.o
