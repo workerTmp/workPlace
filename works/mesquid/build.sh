@@ -25,11 +25,11 @@ make all
 # e.g.
 python3 $SRC/libadd.py $SRC/mesquid/
 #cp $SRC/fuzz_*.zip $OUT/
-for file in $SRC/fuzz_*.c;
+for file in $SRC/fuzz_*.cc;
 do
-    name=$(basename $file .c)
+    name=$(basename $file .cc)
     mkdir /tmp/${name}_corpus
-    $CXX $CXXFLAGS -c  $SRC/${name}.c -o $OUT/${name}.o
+    $CXX $CXXFLAGS -c  $SRC/${name}.cc -o $OUT/${name}.o
     $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/medovecot/liball1.a
     rm -f $OUT/${name}.o
 done
