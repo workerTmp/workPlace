@@ -145,16 +145,17 @@ my_EvalBoolExpr(const char* expr)
 
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
-assert(size>5);
     char *token = NULL;
     char *tmp_line = NULL;
     int tmp_line_len = 0;
     int err_count = 0;
-	int config_lineno=0;
-	unsigned int depth=(unsigned int )*data;
-	char config_input_line[BUFSIZ];
+    int config_lineno=0;
+    unsigned int depth=(unsigned int )*data;
+    char config_input_line[BUFSIZ];
+if(size<5) return 2;
+    
     memset(config_input_line, '\0', BUFSIZ);
-	memcpy(config_input_line,data+4,(size-4)<(BUFSIZ-1)?size-4:BUFSIZ-1);
+    memcpy(config_input_line,data+4,(size-4)<(BUFSIZ-1)?size-4:BUFSIZ-1);
     config_lineno = 0;
 
 	std::vector<bool> if_states;
