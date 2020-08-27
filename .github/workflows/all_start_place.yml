@@ -1,4 +1,4 @@
-name: team ubuntu 
+name: team ubuntu github.event.label.name
 on:
   issues:
     types: labeled
