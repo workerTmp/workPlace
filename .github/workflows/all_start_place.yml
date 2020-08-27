@@ -15,6 +15,15 @@ jobs:
           sudo apt-get update 
           sudo ifconfig
           sudo mkdir /opt/1
+      - name: "mesquid"
+        if: contains(github.event.label.name, 'mesquid')      
+        run: |
+          sudo apt-get update 
+          git clone https://github.com/google/oss-fuzz.git 
+          (cd oss-fuzz && export PROJECT_NAME=mesquid && python infra/helper.py generate $PROJECT_NAME)
+          (cp works/mesquid/* oss-fuzz/projects/mesquid/&&cd oss-fuzz &&python infra/helper.py build_image mesquid --pull)
+          (cd oss-fuzz &&python infra/helper.py build_fuzzers mesquid && python infra/helper.py check_build mesquid)
+          #(cd oss-fuzz && python infra/helper.py run_fuzzer mesquid fuzz_test-istream-attachment)          
       - name: "medovecot"
         if: contains(github.event.label.name, 'medovecot')      
         run: |
