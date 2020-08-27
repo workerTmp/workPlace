@@ -144,7 +144,7 @@ my_EvalBoolExpr(const char* expr)
 
 
 
-extern int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
     char *token = NULL;
     char *tmp_line = NULL;
