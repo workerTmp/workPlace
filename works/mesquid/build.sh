@@ -30,6 +30,6 @@ do
     name=$(basename $file .cc)
     mkdir /tmp/${name}_corpus
     $CXX $CXXFLAGS -c  $SRC/${name}.cc -o $OUT/${name}.o
-    $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/medovecot/liball1.a
+    $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/mesqid/liball1.a
     rm -f $OUT/${name}.o
 done
