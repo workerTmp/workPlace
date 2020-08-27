@@ -29,7 +29,7 @@ for file in $SRC/fuzz_*.c;
 do
     name=$(basename $file .c)
     mkdir /tmp/${name}_corpus
-    $CC $CFLAGS -c -I . $SRC/${name}.c -o $OUT/${name}.o
-    $CXX $CXXFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/medovecot/liball1.a
+    $CC $CFLAGS -c  $SRC/${name}.c -o $OUT/${name}.o
+    $CC $CFLAGS -o $OUT/${name} $OUT/${name}.o $LIB_FUZZING_ENGINE  $SRC/medovecot/liball1.a
     rm -f $OUT/${name}.o
 done
