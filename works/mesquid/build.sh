@@ -17,7 +17,7 @@
 
 # build project
 # e.g.
-./autoreconf -i
+autoreconf -i
 ./configure --prefix=/usr/local/squid
 make all
 
