@@ -15,6 +15,7 @@
 ################################################################################
 
 FROM gcr.io/oss-fuzz-base/base-builder
+RUN apt-get update && apt-get install -y make autoconf automake libtool automake libxml2-dev m4 pkg-config bison
 RUN git clone https://github.com/squid-cache/squid.git  mesquid     
 WORKDIR mesquid
 COPY build.sh $SRC/
