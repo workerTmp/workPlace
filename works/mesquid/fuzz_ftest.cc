@@ -249,7 +249,7 @@ if(size<5) return 2;
 
         my_safe_free(tmp_line);
         tmp_line_len = 0;
-
+	size=0;
     }
 
 
