@@ -26,9 +26,10 @@ static inline void my_xfree(const void *p) { if (p) free_const((const void *)p);
 static void
 my_ReplaceSubstr(char*& str, int& len, unsigned substrIdx, unsigned substrLen, const char* newSubstr)
 {
-    assert(str != NULL);
-    assert(newSubstr != NULL);
-
+ //   assert(str != NULL);
+ //   assert(newSubstr != NULL);
+if(str==NULL or newSubstr==NULL)
+	return;
     unsigned newSubstrLen = strlen(newSubstr);
     if (newSubstrLen > substrLen)
         str = (char*)realloc(str, len - substrLen + newSubstrLen + 1);
@@ -44,10 +45,12 @@ my_ReplaceSubstr(char*& str, int& len, unsigned substrIdx, unsigned substrLen, c
 static void
 my_SubstituteMacro(char*& line, int& len, const char* macroName, const char* substStr)
 {
-    assert(line != NULL);
-    assert(macroName != NULL);
-    assert(substStr != NULL);
-    unsigned macroNameLen = strlen(macroName);
+//    assert(line != NULL);
+//    assert(macroName != NULL);
+//    assert(substStr != NULL);
+if(line==NULL or macroName==NULL or substStr==NULL)
+	return;
+	unsigned macroNameLen = strlen(macroName);
     while (const char* macroPos = strstr(line, macroName)) // we would replace all occurrences
         my_ReplaceSubstr(line, len, macroPos - line, macroNameLen, substStr);
 }
@@ -74,8 +77,10 @@ my_skip_ws(const char* s)
 static void
 my_trim_trailing_ws(char* str)
 {
-    assert(str != NULL);
-    unsigned i = strlen(str);
+ //   assert(str != NULL);
+ if(str==NULL)
+	 return;
+	unsigned i = strlen(str);
     while ((i > 0) && xisspace(str[i - 1]))
         --i;
     str[i] = '\0';
@@ -84,9 +89,10 @@ my_trim_trailing_ws(char* str)
 static const char*
 my_FindStatement(const char* line, const char* statement)
 {
-    assert(line != NULL);
-    assert(statement != NULL);
-
+ //   assert(line != NULL);
+ //   assert(statement != NULL);
+if(line==NULL or statement==NULL)
+	return NULL;
     const char* str = my_skip_ws(line);
     unsigned len = strlen(statement);
     if (strncmp(str, statement, len) == 0) {
@@ -103,8 +109,9 @@ my_FindStatement(const char* line, const char* statement)
 static bool
 my_StrToInt(const char* str, long& number)
 {
-    assert(str != NULL);
-
+//    assert(str != NULL);
+if(str==NULL)
+	return false;
     char* end;
     number = strtol(str, &end, 0);
 
@@ -115,8 +122,10 @@ my_StrToInt(const char* str, long& number)
 static bool
 my_EvalBoolExpr(const char* expr)
 {
-    assert(expr != NULL);
-    if (strcmp(expr, "true") == 0) {
+//    assert(expr != NULL);
+if(expr==NULL)
+	return false;
+if (strcmp(expr, "true") == 0) {
         return true;
     } else if (strcmp(expr, "false") == 0) {
         return false;
@@ -128,7 +137,8 @@ my_EvalBoolExpr(const char* expr)
 
         long number1;
         if (!my_StrToInt(lvalue, number1))
-			exit(1);
+		return false;	
+		//exit(1);
 //            fatalf("String is not a integer number: '%s'\n", lvalue);
         long number2;
         if (!my_StrToInt(rvalue, number2))
