@@ -159,7 +159,7 @@ if(size<5) return 2;
     config_lineno = 0;
 
 	std::vector<bool> if_states;
-    while (size) {
+
         ++config_lineno;
 
         if ((token = strchr(config_input_line, '\n')))
@@ -181,15 +181,20 @@ if(size<5) return 2;
             new_lineno = strtol(token, &file, 0) - 1;
 
             if (file == token)
-                continue;   /* Not a valid #line directive, may be a comment */
+	    {
 
+		    return 1;
+//		    continue;   /* Not a valid #line directive, may be a comment */
+	    }
             while (*file && xisspace((unsigned char) *file))
                 ++file;
 
             if (*file) {
                 if (*file != '"')
-                    continue;   /* Not a valid #line directive, may be a comment */
-
+		{
+			return 2;
+//                    continue;   /* Not a valid #line directive, may be a comment */
+		}
                 xstrncpy(new_file_name, file + 1, sizeof(new_file_name));
 
                 if ((token = strchr(new_file_name, '"')))
@@ -202,10 +207,12 @@ if(size<5) return 2;
         }
 
         if (config_input_line[0] == '#')
-            continue;
+		return 3;
+		//            continue;
 
         if (config_input_line[0] == '\0')
-            continue;
+            return 4;
+		//continue;
 
         const char* append = tmp_line_len ? my_skip_ws(config_input_line) : config_input_line;
 
@@ -220,7 +227,9 @@ if(size<5) return 2;
         if (tmp_line[tmp_line_len-1] == '\\') {
 //            debugs(3, 5, "parseConfigFile: tmp_line='" << tmp_line << "'");
             tmp_line[--tmp_line_len] = '\0';
-            continue;
+	    my_xfree(tmp_line);
+	    return 6;
+//            continue;
         }
 
         my_trim_trailing_ws(tmp_line);
