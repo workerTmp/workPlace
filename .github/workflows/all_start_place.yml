@@ -110,7 +110,7 @@ jobs:
           sudo apt-get install iftop
           sudo apt-get install pandoc
           git clone https://github.com/curl/curl.git
-          (cd curl&&./buildconf &&./configure&&make&&sudo make install&&echo $?)
+          (cd curl&&autoreconf -fi &&./configure&&make&&sudo make install&&echo $?)
           sh in/d1.sh
           sh in/d2.sh
           sh in/s1.sh 
