@@ -165,6 +165,18 @@ jobs:
           sudo apt-get install -y gdb
           git clone https://github.com/longld/peda.git ~/peda
           echo "source ~/peda/peda.py" >> ~/.gdbinit
-          sudo mkdir /opt/ttt/            
+          sudo mkdir /opt/ttt/      
+      - name: "VideoStat"
+        if: contains(github.event.label.name,'VideoStat')      
+        run: |
+           sudo apt-get update -y
+           sudo apt-get install p7zip-full unzip  
+           sudo apt-get install -y git python3 python3-pandas python3-pip python3-setuptools
+           sudo pip3 install scikit-build
+           sudo pip3 install opencv-python
+           sudo apt-get install python-requests          
+           sudo pip3 install imutils
+           sudo pip3 install Pillow
+           sudo pip3 install youtube-video-upload
       - name: "Setup tmate session"
         uses: mxschmitt/action-tmate@v2
