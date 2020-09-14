@@ -169,7 +169,7 @@ jobs:
           sudo mkdir /opt/ttt/      
       - name: "my works"
         run: |
-          sudo apt-get install -y tmate python3-pip python3-setuptools
+          sudo apt-get install -y tmate openssh-client python3-pip python3-setuptools
           sudo pip3 install pytelegrambotapi --upgrade
           sudo python3 /opt/tele.py ${{github.event.label.name}}
  #     - name: "Setup tmate session"
