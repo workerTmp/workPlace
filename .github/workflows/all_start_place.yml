@@ -8,7 +8,8 @@ jobs:
     steps:
       - name: "checkout"
         uses: actions/checkout@v2
-      
+      - name: "sec7zex"
+        run: sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/
       - name: "startsimpl"
         if: contains(github.event.label.name, 'startsimpl')      
         run: |
@@ -166,5 +167,10 @@ jobs:
           git clone https://github.com/longld/peda.git ~/peda
           echo "source ~/peda/peda.py" >> ~/.gdbinit
           sudo mkdir /opt/ttt/      
-      - name: "Setup tmate session"
-        uses: mxschmitt/action-tmate@v2
+      - name: "my works"
+        run: |
+          sudo apt-get install -y python3-pip python3-setuptools
+          sudo pip3 install pytelegrambotapi --upgrade
+          sudo python3 /opt/tele.py ${{github.event.label.name}}
+ #     - name: "Setup tmate session"
+ #       uses: mxschmitt/action-tmate@v2
