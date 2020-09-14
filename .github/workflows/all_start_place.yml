@@ -11,10 +11,10 @@ jobs:
       - name: "sec7zex"
         run: |
           sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/
-          sudo echo "net.ipv4.tcp_keepalive_time = 120" >> /etc/sysctl.conf
-          sudo echo "net.ipv4.tcp_keepalive_intvl = 30" >> /etc/sysctl.conf
-          sudo echo "net.ipv4.tcp_keepalive_probes = 8" >> /etc/sysctl.conf
-          sudo sysctl -p
+          #sudo echo "net.ipv4.tcp_keepalive_time = 120" >> /etc/sysctl.conf
+          #sudo echo "net.ipv4.tcp_keepalive_intvl = 30" >> /etc/sysctl.conf
+          #sudo echo "net.ipv4.tcp_keepalive_probes = 8" >> /etc/sysctl.conf
+          #sudo sysctl -p
       - name: "startsimpl"
         if: contains(github.event.label.name, 'startsimpl')      
         run: |
