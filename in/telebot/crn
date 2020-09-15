@@ -1,2 +1,2 @@
-*/9 * * * * pkill -f tele.py
-*/10 * * * * sudo /usr/bin/python3 /opt/tele.py  
+9,19,29,39,49,58 * * * * pkill -f tele.py
+10,20,30,40,50,59 * * * * sudo /usr/bin/python3 /opt/tele.py  
