@@ -15,4 +15,5 @@ while True:
   localtime = time.localtime()
   result = time.strftime("%I:%M:%S %p", localtime)
   #print(result)
+  sys.exit(1)
   time.sleep(100)
