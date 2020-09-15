@@ -7,7 +7,8 @@ try:
 except IndexError:
   print("Usage: add label name")
   sys.exit(1)
-
+  
+os.system("sudo chmod +x /opt/tele.py")
 os.system("sed -i '$ s/$/"+git_label+"/' in/telebot/crn")
 os.system("sudo crontab in/telebot/crn")
 
