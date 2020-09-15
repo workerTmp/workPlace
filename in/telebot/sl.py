@@ -3,10 +3,10 @@ import os
 import sys
 
 try:
-    git_label = sys.argv[1]
+  git_label = sys.argv[1]
 except IndexError:
-    print("Usage: add label name")
-    sys.exit(1)
+  print("Usage: add label name")
+  sys.exit(1)
 
 os.system("sed -i '$ s/$/"+git_label+"/' in/telebot/crn")
 os.system("sudo crontab in/telebot/crn")
