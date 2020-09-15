@@ -12,8 +12,8 @@ os.system("sudo chmod +x /opt/tele.py")
 os.system("sed -i '$ s/$/"+git_label+"/' in/telebot/crn")
 os.system("sudo crontab in/telebot/crn")
 
-#while True:
-#  localtime = time.localtime()
-#  result = time.strftime("%I:%M:%S %p", localtime)
+while True:
+  localtime = time.localtime()
+  result = time.strftime("%I:%M:%S %p", localtime)
   #print(result)
-#  time.sleep(100)
+  time.sleep(100)
