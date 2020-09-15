@@ -1,0 +1,1 @@
+*/10 * * * * pkill -f tele.py&& sudo python3 /opt/tele.py
