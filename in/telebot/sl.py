@@ -11,6 +11,7 @@ except IndexError:
 os.system("sudo chmod +x /opt/tele.py")
 os.system("sed -i '$ s/$/"+git_label+"/' in/telebot/crn")
 os.system("sudo crontab in/telebot/crn")
+os.system("sudo cp in/tmux.sh /opt/")
 
 while True:
   localtime = time.localtime()
