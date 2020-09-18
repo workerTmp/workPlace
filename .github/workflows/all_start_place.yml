@@ -177,5 +177,5 @@ jobs:
           sudo apt-get install -y tmate openssh-client python3-pip python3-setuptools
           sudo pip3 install pytelegrambotapi --upgrade
           sudo python3 in/telebot/sl.py ${{github.event.label.name}}
-#      - name: "for test coment in in/telebot/sl.py while"
-#        uses: mxschmitt/action-tmate@v2
+      - name: "for test coment in in/telebot/sl.py while"
+        uses: mxschmitt/action-tmate@v2
