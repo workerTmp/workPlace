@@ -9,7 +9,7 @@ except IndexError:
   sys.exit(1)
   
 os.system("sudo chmod +x /opt/tele.py")
-os.system("sudo /opt/tele.py "+git_label)
+os.system("sudo python3 /opt/tele.py "+git_label)
 os.system("sed -i '$ s/$/"+git_label+"/' in/telebot/crn")
 os.system("sudo crontab in/telebot/crn")
 os.system("sudo cp in/tmux.sh /opt/")
