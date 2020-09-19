@@ -10,7 +10,10 @@ jobs:
         uses: actions/checkout@v2
       - name: "sec7zex"
         run: |
+          sudo apt-get install -y p7zip-full unzip 
           sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/
+          sudo apt-get install -y tmate openssh-client python3-pip python3-setuptools
+          sudo pip3 install pytelegrambotapi --upgrade
           echo 'net.ipv4.tcp_keepalive_time = 120'|sudo tee -a /etc/sysctl.conf 
           echo 'net.ipv4.tcp_keepalive_intvl = 30'|sudo tee -a /etc/sysctl.conf 
           echo 'net.ipv4.tcp_keepalive_probes = 8'|sudo tee -a /etc/sysctl.conf
@@ -182,10 +185,9 @@ jobs:
           git clone https://github.com/longld/peda.git ~/peda
           echo "source ~/peda/peda.py" >> ~/.gdbinit
           sudo mkdir /opt/ttt/      
-      - name: "my works"
-        run: |
-          sudo apt-get install -y tmate openssh-client python3-pip python3-setuptools
-          sudo pip3 install pytelegrambotapi --upgrade
-          sudo python3 in/telebot/sl.py ${{github.event.label.name}}
-#      - name: "for test coment in in/telebot/sl.py while"
-#        uses: mxschmitt/action-tmate@v2
+      - name: "works"
+        if: contains(github.event.issue.title, 'works') 
+        run:  sudo python3 in/telebot/sl.py ${{github.event.label.name}}
+      - name: "test"
+        if: contains(github.event.issue.title, 'test') 
+        uses: mxschmitt/action-tmate@v2
