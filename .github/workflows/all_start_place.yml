@@ -32,6 +32,10 @@ jobs:
           sudo pip3 install wheel
           sudo -H pip3 install --ignore-installed PyYAML 
           sudo mkdir /opt/1    
+      - name: "static analizer"
+        if: contains(github.event.label.name, 'StAnWeb')      
+        run: |    
+          sudo mkdir /opt/2         
       - name: "startsimpl"
         if: contains(github.event.label.name, 'startsimpl')      
         run: |
