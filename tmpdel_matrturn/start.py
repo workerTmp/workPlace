@@ -182,7 +182,7 @@ def run_generate_config(environ, ownership):
     os.system("echo \"turn_user_lifetime: 86400000\" >> /data/homeserver.yaml")
     os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
     os.system("cp " + config_dir + "/turnserver.conf /etc/")
-
+    os.system("cp " + config_dir + "/turnserver.conf /data/")
 
 def main(args, environ):
     mode = args[1] if len(args) > 1 else "run"
