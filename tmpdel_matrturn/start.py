@@ -214,7 +214,9 @@ def main(args, environ):
     if mode != "run":
         error("Unknown execution mode '%s'" % (mode,))
     
-    os.system("systemctl start coturn")
+    os.system("echo \"\" >> /etc/default/coturn") 
+    os.system("echo \"TURNSERVER_ENABLED=1\" >> /etc/default/coturn")
+    os.system("/etc/init.d/coturn start")
     
     args = args[2:]
 
