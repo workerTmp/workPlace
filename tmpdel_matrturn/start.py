@@ -214,7 +214,7 @@ def main(args, environ):
     if mode != "run":
         error("Unknown execution mode '%s'" % (mode,))
     
-    os.sytem("systemctl start coturn")
+    os.system("systemctl start coturn")
     
     args = args[2:]
 
