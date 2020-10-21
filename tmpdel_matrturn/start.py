@@ -206,7 +206,6 @@ def main(args, environ):
 
     if mode != "run":
         error("Unknown execution mode '%s'" % (mode,))
-    os.system("sudo apt-get install -y coturn")
 
     os.system("echo \"\" >> /data/homeserver.yaml")
     os.system("echo \"turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]\" >> /data/homeserver.yaml")
