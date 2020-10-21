@@ -215,8 +215,8 @@ def main(args, environ):
         os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
 
         os.system("cp /conf/turnserver.conf /etc/")
-        os.system("echo \"\" >> /etc/default/coturn") 
-        os.system("echo \"TURNSERVER_ENABLED=1\" >> /etc/default/coturn")
+    os.system("echo \"\" >> /etc/default/coturn") 
+    os.system("echo \"TURNSERVER_ENABLED=1\" >> /etc/default/coturn")
     os.system("/etc/init.d/coturn start")
     
     args = args[2:]
