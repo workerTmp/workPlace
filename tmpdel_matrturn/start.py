@@ -206,16 +206,17 @@ def main(args, environ):
 
     if mode != "run":
         error("Unknown execution mode '%s'" % (mode,))
+    if not os.path.exists("/data/flagedit"):
+        open("/data/flagedit", "w+").close()
+        os.system("echo \"\" >> /data/homeserver.yaml")
+        os.system("echo \"turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]\" >> /data/homeserver.yaml")
+        os.system("echo \"turn_shared_secret: motdepasseapg\" >> /data/homeserver.yaml")
+        os.system("echo \"turn_user_lifetime: 86400000\" >> /data/homeserver.yaml")
+        os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
 
-    os.system("echo \"\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_shared_secret: motdepasseapg\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_user_lifetime: 86400000\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
-
-    os.system("cp /conf/turnserver.conf /etc/")
-    os.system("echo \"\" >> /etc/default/coturn") 
-    os.system("echo \"TURNSERVER_ENABLED=1\" >> /etc/default/coturn")
+        os.system("cp /conf/turnserver.conf /etc/")
+        os.system("echo \"\" >> /etc/default/coturn") 
+        os.system("echo \"TURNSERVER_ENABLED=1\" >> /etc/default/coturn")
     os.system("/etc/init.d/coturn start")
     
     args = args[2:]
