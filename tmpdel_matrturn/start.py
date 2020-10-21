@@ -177,13 +177,6 @@ def run_generate_config(environ, ownership):
     else:
         os.execv("/usr/local/bin/python", args)
 
-    os.system("echo \"\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_shared_secret: motdepasseapg\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_user_lifetime: 86400000\" >> /data/homeserver.yaml")
-    os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
-    os.system("cp /conf/turnserver.conf /etc/")
-
 def main(args, environ):
     mode = args[1] if len(args) > 1 else "run"
     desired_uid = int(environ.get("UID", "991"))
@@ -213,7 +206,15 @@ def main(args, environ):
 
     if mode != "run":
         error("Unknown execution mode '%s'" % (mode,))
-    
+    os.system("sudo apt-get install -y corutn")
+
+    os.system("echo \"\" >> /data/homeserver.yaml")
+    os.system("echo \"turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]\" >> /data/homeserver.yaml")
+    os.system("echo \"turn_shared_secret: motdepasseapg\" >> /data/homeserver.yaml")
+    os.system("echo \"turn_user_lifetime: 86400000\" >> /data/homeserver.yaml")
+    os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
+
+    os.system("cp /conf/turnserver.conf /etc/")
     os.system("echo \"\" >> /etc/default/coturn") 
     os.system("echo \"TURNSERVER_ENABLED=1\" >> /etc/default/coturn")
     os.system("/etc/init.d/coturn start")
