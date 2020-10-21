@@ -209,7 +209,7 @@ def main(args, environ):
     if not os.path.exists("/data/flagedit"):
         open("/data/flagedit", "w+").close()
         os.system("echo \"\" >> /data/homeserver.yaml")
-        os.system("echo \"turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]\" >> /data/homeserver.yaml")
+        os.system("echo 'turn_uris: [ \"turn:turn.mondomaine.com:3478?transport=udp\" ]' >> /tmp/homeserver.yaml")
         os.system("echo \"turn_shared_secret: motdepasseapg\" >> /data/homeserver.yaml")
         os.system("echo \"turn_user_lifetime: 86400000\" >> /data/homeserver.yaml")
         os.system("echo \"turn_allow_guests: True\" >> /data/homeserver.yaml")
