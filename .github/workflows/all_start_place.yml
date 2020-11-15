@@ -42,6 +42,11 @@ jobs:
           sudo apt-get update 
           sudo ifconfig
           sudo mkdir /opt/1
+      - name: "baseOssFuzz"
+        if: contains(github.event.label.name, 'baseOssFuzz')      
+        run: |
+          sudo apt-get update 
+          git clone https://github.com/google/oss-fuzz.git
       - name: "mesquid"
         if: contains(github.event.label.name, 'mesquid')      
         run: |
