@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#sh 1.sh medovecot -only build fuzzers
-#sh 1.sh medovecot fuzz_test-mbox-from build fuzzers and start targets
-#sh 1.sh medovecot fuzz_test-mbox-from 1 only start targets
+#sh works/create.sh medovecot -only build fuzzers
+#sh works/create.sh medovecot fuzz_test-mbox-from build fuzzers and start targets
+#sh works/create.sh medovecot fuzz_test-mbox-from 1 only start targets
 
 echo $#
 if [ "$#" -ne 3 ]; then
