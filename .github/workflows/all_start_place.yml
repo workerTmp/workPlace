@@ -47,33 +47,6 @@ jobs:
         run: |
           sudo apt-get update 
           git clone https://github.com/google/oss-fuzz.git
-      - name: "mesquid"
-        if: contains(github.event.label.name, 'mesquid')      
-        run: |
-          sudo apt-get update 
-          git clone https://github.com/google/oss-fuzz.git 
-          (cd oss-fuzz && export PROJECT_NAME=mesquid && python infra/helper.py generate $PROJECT_NAME)
-          (cp works/mesquid/* oss-fuzz/projects/mesquid/&&cd oss-fuzz &&python infra/helper.py build_image mesquid --pull)
-          (cd oss-fuzz &&python infra/helper.py build_fuzzers mesquid && python infra/helper.py check_build mesquid)
-          #(sudo mkdir /opt/123&&cd oss-fuzz && python infra/helper.py run_fuzzer  --corpus-dir /opt/123/ mesquid fuzz_ftest)          
-      - name: "medovecot"
-        if: contains(github.event.label.name, 'medovecot')      
-        run: |
-          sudo apt-get update 
-          git clone https://github.com/google/oss-fuzz.git 
-          (cd oss-fuzz && export PROJECT_NAME=medovecot && python infra/helper.py generate $PROJECT_NAME)
-          (cp works/medovecot/* oss-fuzz/projects/medovecot/&&cd oss-fuzz &&python infra/helper.py build_image medovecot --pull)
-          (cd oss-fuzz &&python infra/helper.py build_fuzzers medovecot && python infra/helper.py check_build medovecot)
-          #(sudo mkdir /opt/123&&cd oss-fuzz && python infra/helper.py run_fuzzer --corpus-dir /opt/123/ medovecot fuzz_test-istream-attachment)
-      - name: "rowdovecot"
-        if: contains(github.event.label.name, 'rowdovecot')      
-        run: |
-          sudo apt-get update 
-          git clone https://github.com/google/oss-fuzz.git 
-          (cd oss-fuzz && export PROJECT_NAME=rowdovecot && python infra/helper.py generate $PROJECT_NAME)
-          (cp works/rowdovecot/* oss-fuzz/projects/rowdovecot/&&cd oss-fuzz &&python infra/helper.py build_image rowdovecot --pull)
-          (cd oss-fuzz &&python infra/helper.py build_fuzzers rowdovecot && python infra/helper.py check_build rowdovecot)
-          #(sudo mkdir /opt/123&&cd oss-fuzz && python infra/helper.py run_fuzzer --corpus-dir /opt/123/ rowdovecot fuzz-smtp-server)
       - name: "pdnstmux"
         if: contains(github.event.label.name, 'pdnstmux')      
         run: |
