@@ -10,7 +10,7 @@ if [ "$#" -ne 3 ]; then
     (cd oss-fuzz && export PROJECT_NAME=$1 && python infra/helper.py generate $PROJECT_NAME)
   fi
   #works/$1 change to works/MyProj/ for all projects one folder
-  (cp works/$1/* oss-fuzz/projects/$1/&&cd oss-fuzz &&python infra/helper.py build_image $1 --pull)
+  (cp -r works/$1/* oss-fuzz/projects/$1/&&cd oss-fuzz &&python infra/helper.py build_image $1 --pull)
   (cd oss-fuzz &&python infra/helper.py build_fuzzers $1 && python infra/helper.py check_build  $1)
 fi
 if [ "$#" -eq 1 ]; then
