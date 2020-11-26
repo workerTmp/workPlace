@@ -29,7 +29,7 @@ $ python infra/helper.py check_build  --sanitizer <address/memory/undefined> \
     <fuzz_target_name>  
 4. create corpus file
 
-python3 oss-fuzz/parseCorpus.py fileName.tmp 124/ fuzz_name
+python3 works/oss-fuzz/parseCorpus.py fileName.tmp 124/ fuzz_name
 	
 
 
