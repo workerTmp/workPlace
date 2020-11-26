@@ -28,6 +28,7 @@ $ python infra/helper.py check_build  --sanitizer <address/memory/undefined> \
     --engine <libfuzzer/afl/honggfuzz> --architecture <x86_64/i386> $PROJECT_NAME \  
     <fuzz_target_name>  
 4. create corpus file
+
 python3 oss-fuzz/parseCorpus.py fileName.tmp 124/ fuzz_name
 	
 
