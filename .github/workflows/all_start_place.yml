@@ -31,8 +31,8 @@ jobs:
       - name: "codeqlhand"
         if: contains(github.event.label.name, 'codeqlhand')      
         run: |
-          (cd /opt/&&mkdir codeqlmy&&cd codeqlmy&&git clone https://github.com/github/codeql.git codeql-repo) 
-          (cd codeqlmy&&wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.1/codeql-linux64.zip&&unzip codeql-linux64.zip&&rm codeql-linux64.zip)
+          (cd /opt/&&sudo mkdir codeqlmy&&cd codeqlmy&&sudo git clone https://github.com/github/codeql.git codeql-repo) 
+          (cd /opt/codeqlmy&&sudo wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.1/codeql-linux64.zip&&sudo unzip codeql-linux64.zip&&sudo rm codeql-linux64.zip)
           export PATH=/opt/codeqlmy/codeql:$PATH
       - name: "liosshand"
         if: contains(github.event.label.name, 'liosshand')      
