@@ -1,4 +1,5 @@
 #!/bin/sh
+cd /opt/
 sudo apt install iftop
 sudo apt install nmon
 tmux new-session -d
