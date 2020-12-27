@@ -61,7 +61,7 @@ jobs:
         run: |
           (cd /opt/&&git clone https://github.com/google/oss-fuzz.git)
           sudo cp works/create.sh /opt/create.sh
-          sudo cp in/RM_codeqlhand.sh /opt/RM.sh
+          sudo cp in/RM_baseOssFuzz.sh /opt/RM.sh
       - name: "pdnstmux"
         if: contains(github.event.label.name, 'pdnstmux')      
         run: |
