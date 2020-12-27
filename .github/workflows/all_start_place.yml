@@ -23,6 +23,9 @@ jobs:
           sudo sysctl -p
           sudo npm install --global http-server
           sudo mkdir /opt/docs/
+          sudo mkdir /tmp/in
+          sudo mkdir /tmp/out
+          sudo cp in/RM.sh /opt/RM.sh
           echo -e 'y\n'|sudo ssh-keygen -q -t rsa -N "" -f /root/.ssh/id_rsa
           sudo cp in/tmux.sh /opt/
       - name: "works7z"
@@ -33,17 +36,7 @@ jobs:
         run: |
           (cd /opt/&&sudo mkdir codeqlmy&&cd codeqlmy&&sudo git clone https://github.com/github/codeql.git codeql-repo) 
           (cd /opt/codeqlmy&&sudo wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.1/codeql-linux64.zip&&sudo unzip codeql-linux64.zip&&sudo rm codeql-linux64.zip)
-          echo "echo \"export PATH=/tmp/codeqlmy/codeql:$PATH\"" >> /opt/RM.sh 
-          echo "echo \"codeql resolve languages\"" >> /opt/RM.sh
-          echo "echo \"codeql resolve qlpacks\"" >> /opt/RM.sh
-          echo "echo \"codeql query format -i <file>\"" >> /opt/RM.sh
-          echo "echo \"codeql generate query-help --format=markdown\"" >> /opt/RM.sh
-          echo "echo \"codeql database create cpp-database --language=cpp --command=make\"" >> /opt/RM.sh
-          echo "echo \"codeql query run file.ql -d=db1\"" >> /opt/RM.sh
-          echo "echo \"codeql test run file.qlref\"" >> /opt/RM.sh
-          echo "while true; do" >> /opt/RM.sh
-          echo "sleep 3000" >> /opt/RM.sh
-          echo "done" >> /opt/RM.sh
+          sudo cp in/RM_codeqlhand.sh /opt/RM.sh
       - name: "liosshand"
         if: contains(github.event.label.name, 'liosshand')      
         run: |
