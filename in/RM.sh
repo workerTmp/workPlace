@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 echo "curl -F \"file=@test.txt\" https://file.io"
 echo "7z x /tmp/1.7z -o\"/tmp/in\" -p123321"
