@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "export PATH=/opt/codeqlmy/codeql:$PATH"
+echo "create projectFolder in works/"
+echo "export PATH=/opt/codeqlmy/codeql:$tmpPATH"
 echo "codeql resolve languages"
 echo "codeql resolve qlpacks"
 echo "codeql query format -i <file>"
