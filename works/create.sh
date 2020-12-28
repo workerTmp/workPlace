@@ -4,7 +4,6 @@
 #sh works/create.sh medovecot fuzz_test-mbox-from build fuzzers and start targets
 #sh works/create.sh medovecot fuzz_test-mbox-from 1 only start targets
 
-cd /opt/
 echo $#
 if [ "$#" -ne 3 ]; then
   if [ ! -d "oss-fuzz/$1" ]; then
