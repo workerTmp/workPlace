@@ -59,8 +59,7 @@ jobs:
       - name: "baseOssFuzz"
         if: contains(github.event.label.name, 'baseOssFuzz')      
         run: |
-          (cd /opt/&&git clone https://github.com/google/oss-fuzz.git)
-          sudo cp works/create.sh /opt/create.sh
+          git clone https://github.com/google/oss-fuzz.git
           sudo cp in/RM_baseOssFuzz.sh /opt/RM.sh
       - name: "pdnstmux"
         if: contains(github.event.label.name, 'pdnstmux')      
