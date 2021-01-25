@@ -50,6 +50,10 @@ jobs:
       - name: "static analizer"
         if: contains(github.event.label.name, 'StAnWeb')      
         run: |    
+          sudo mkdir /opt/2    
+      - name: "start work with mAllke"  
+        if: contains(github.event.label.name, 'mALLke')      
+        run: |    
           sudo mkdir /opt/2         
       - name: "startsimpl"
         if: contains(github.event.label.name, 'startsimpl')      
