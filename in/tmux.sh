@@ -1,4 +1,5 @@
 #!/bin/sh
+export PROMPT_COMMAND="history -a;"
 cd /tmp/works/
 sudo apt install iftop
 sudo apt install nmon
