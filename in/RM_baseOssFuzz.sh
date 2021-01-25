@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "export PROMPT_COMMAND=\"history -a;\""
 echo "sh works/create.sh medovecot"
 echo "only build fuzzers"
 echo "sh works/create.sh medovecot fuzz_test-mbox-from"
