@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "export PROMPT_COMMAND=\"history -a;\""
 echo "create projectFolder in works/"
 echo "export PATH=/opt/codeqlmy/codeql:$tmpPATH"
 echo "codeql test run <qlref> --show-extractor-output"
