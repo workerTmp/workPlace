@@ -32,6 +32,12 @@ jobs:
       - name: "works7z"
         if: contains(github.event.issue.title, 'works') 
         run:  sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/        
+      - name: "mLGTM"
+        if: contains(github.event.label.name, 'mLGTM')      
+        run: |
+          (cd /opt/&&sudo mkdir codeqlmy&&cd codeqlmy&&sudo git clone https://github.com/github/codeql.git codeql-repo) 
+          (cd /opt/codeqlmy&&sudo wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.3/codeql-linux64.zip&&sudo unzip codeql-linux64.zip&&sudo rm codeql-linux64.zip)
+          sudo cp in/RM_codeqlhand.sh /opt/RM.sh
       - name: "codeqlhand"
         if: contains(github.event.label.name, 'codeqlhand')      
         run: |
