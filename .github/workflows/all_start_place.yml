@@ -14,7 +14,7 @@ jobs:
       - name: "sec7zex"
         run: |
           sudo apt-get update 
-          sudo apt-get install -y p7zip-full unzip 
+          sudo apt-get install -y p7zip-full unzip iftop nmon
           sudo apt-get install -y tmate openssh-client python3-pip python3-setuptools
           sudo pip3 install pytelegrambotapi --upgrade
           echo 'net.ipv4.tcp_keepalive_time = 120'|sudo tee -a /etc/sysctl.conf 
@@ -36,7 +36,7 @@ jobs:
         if: contains(github.event.label.name, 'mLGTM')      
         run: |
           (cd /opt/&&sudo mkdir codeqlmy&&cd codeqlmy&&sudo git clone https://github.com/github/codeql.git codeql-repo) 
-          (cd /opt/codeqlmy&&sudo wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.1/codeql-linux64.zip&&sudo unzip codeql-linux64.zip&&sudo rm codeql-linux64.zip)
+          (cd /opt/codeqlmy&&sudo wget https://github.com/github/codeql-cli-binaries/releases/download/v2.4.3/codeql-linux64.zip&&sudo unzip codeql-linux64.zip&&sudo rm codeql-linux64.zip)
           sudo cp in/RM_codeqlhand.sh /opt/RM.sh
       - name: "codeqlhand"
         if: contains(github.event.label.name, 'codeqlhand')      
