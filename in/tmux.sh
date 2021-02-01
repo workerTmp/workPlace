@@ -1,8 +1,8 @@
 #!/bin/sh
-export PROMPT_COMMAND="history -a;"
+#export PROMPT_COMMAND="history -a;"
 cd /tmp/works/
-sudo apt install iftop
-sudo apt install nmon
+#sudo apt install iftop
+#sudo apt install nmon
 #tmux new-session -d
 tmux split-window -v
 tmux split-window -v 'sudo iftop'
