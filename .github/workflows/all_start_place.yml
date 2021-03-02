@@ -33,7 +33,7 @@ jobs:
         if: contains(github.event.issue.title, 'works') 
         run:  sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/
       - name: "jupyter"
-        if: contains(github.event.label.name, 'mLGTM')      
+        if: contains(github.event.label.name, 'jupyter')      
         run: |
           sudo cp in/conf.py /opt/conf.py
           (pip3 install jupyter_contrib_nbextensions && jupyter contrib nbextension install)
