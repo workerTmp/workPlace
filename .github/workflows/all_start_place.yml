@@ -31,7 +31,13 @@ jobs:
           sudo cp in/tmux.sh /opt/
       - name: "works7z"
         if: contains(github.event.issue.title, 'works') 
-        run:  sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/        
+        run:  sudo 7z x insec/archive.7z -p${{ secrets.GIT_PASS }} -o/opt/
+      - name: "jupyter"
+        if: contains(github.event.label.name, 'mLGTM')      
+        run: |
+          sudo cp in/conf.py /opt/conf.py
+          (pip3 install jupyter_contrib_nbextensions && jupyter contrib nbextension install)
+          jupyter-notebook --config=/opt/conf.py
       - name: "mLGTM"
         if: contains(github.event.label.name, 'mLGTM')      
         run: |
