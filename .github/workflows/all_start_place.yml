@@ -38,7 +38,7 @@ jobs:
           sudo cp in/conf.py /opt/conf.py
           (sudo apt-get install python3-dev python3-pip python3-venv python3-wheel -y&& sudo pip3 install wheel)
           (sudo pip3 install jupyter_contrib_nbextensions && sudo jupyter contrib nbextension install)
-          (sudo pip3 install kaggle --upgrade)
+          (sudo pip3 install scikit-learn&&pip3 install xgboost&&sudo pip3 install kaggle --upgrade)
           sudo jupyter-notebook --config=/opt/conf.py &
       - name: "mLGTM"
         if: contains(github.event.label.name, 'mLGTM')      
