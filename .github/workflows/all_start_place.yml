@@ -40,6 +40,7 @@ jobs:
           (sudo pip3 install jupyter_contrib_nbextensions && sudo jupyter contrib nbextension install)
           (sudo pip3 install scikit-learn&&sudo pip3 install xgboost&&sudo pip3 install kaggle --upgrade)
           (sudo pip3 install statsmodels&& sudo pip3 install seaborn&&sudo pip3 install graphviz&&sudo pip3 install bayesian-optimization)
+          (sudo pip3 install plotly&&sudo pip3 install cufflinks)
           (sudo apt-get install -y python-pydot python-pydot-ng graphviz)
           sudo jupyter-notebook --config=/opt/conf.py &
       - name: "mLGTM"
