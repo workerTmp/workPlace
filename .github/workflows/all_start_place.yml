@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
       - name: "sec7zex"
         run: |
-          sudo apt-get update 
+#          sudo apt-get update 
           sudo apt-get install -y p7zip-full unzip iftop nmon
           sudo apt-get install -y tmate openssh-client python3-pip python3-setuptools python3-pandas
           sudo pip3 install pytelegrambotapi --upgrade
